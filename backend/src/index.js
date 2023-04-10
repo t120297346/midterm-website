@@ -1,11 +1,26 @@
 import express from "express";
+import path, { dirname } from "path";
+import { fileURLToPath } from "url";
+import rootRouter from "./routes";
 
+const _dirname = dirname(fileURLToPath(import.meta.url));
+const frontendDir = path.join(_dirname, "../../frontend/dist");
 const port = process.env.PORT || 8000;
 const app = express();
 
-app.get("/", (req, res) => {
-res.send("Hello World!");
+app.use(express.static(frontendDir));
+app.use(rootRouter);
+app.get('*', (req, res) => {
+    if (!req.originalUrl.startsWith("/api")) {
+        return res.sendFile(path.join(frontendDir, "index.html"));
+    }
+    return res.status(404).send();
 });
+
+app.post("/", function (req, res) {
+    res.send("Got a POST request");
+});
+
 app.listen(port, () => {
 console.log(`Example app listening at http://localhost:${port}`);
 });
