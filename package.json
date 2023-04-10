@@ -1,10 +1,11 @@
 {
   "name": "midterm-website",
   "version": "1.0.0",
-  "license": "MIT", 
+  "license": "MIT",
   "scripts": {
     "start": "cd backend && yarn start",
     "build": "cd frontend && yarn build",
-    "install:all": "cd frontend && yarn install --production=false && cd ../backend && yarn"
-  }
+    "install:all": "cd frontend && yarn install --production=false && cd ../backend && yarn start"
+  },
+  "dependencies": {}
 }
