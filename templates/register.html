@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<header>
+  <meta charset="utf-8">
+  <title>Register</title>
+</header>
+
+<style>
+  body {
+    color: rgb(0, 2, 128);
+  }
+
+  a {
+    color: rgb(7, 68, 173);
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+
+  li {
+    float: left;
+  }
+
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  li a:hover {
+    background-color: #111;
+  }
+</style>
+
+<body>
+  <ul>
+    <li><a class="active" href="./">首頁</a></li>
+  </ul>
+  <div style="text-align: center; margin-top:30px">
+    <form class="" action="register.php" method="post" enctype=multipart/form-data>
+      <p><input type="text" name="name" value="" placeholder="輸入名字"><br></p>
+      <p><input type="password" name="password" value="" panel placeholder="輸入密碼"><br></p>
+      <p><input type="password" name="pwcheck" value="" panel placeholder="再次輸入密碼"><br></p>
+      <p><input type="hidden" name="csrf_token" value="{{token}}">
+        照片：<input type=file name=photo>
+      <p>請選擇適當的圖片，避免造成圖片變形！</p>
+      <p>PS1:請使用jpg格式圖檔</p>
+      <p>PS2:上傳圖片才可註冊喔</p>
+
+      <br>
+      <input type="submit" name="" value="註冊"><br>
+    </form>
+    <br><br><br>
+  </div>
+</body>
+
+</html>

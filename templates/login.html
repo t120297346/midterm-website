@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<header>
+  <meta charset="utf-8">
+  <title>Login</title>
+</header>
+<style>
+  body {
+    color: rgb(0, 2, 128);
+  }
+
+  a {
+    color: rgb(7, 68, 173);
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+
+  li {
+    float: left;
+  }
+
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  li a:hover {
+    background-color: #111;
+  }
+</style>
+
+<body>
+  <ul>
+    <li><a class="active" href="./">首頁</a></li>
+  </ul>
+  <div style="text-align: center;" valign="center">
+
+    <form class="" action="login.php" method="post">
+        <p><input type="text" name="name" value="" placeholder="輸入名字"><br></p>
+        <p><input type="password" name="password" value="" placeholder="輸入密碼"><br></p>
+        <input type="hidden" name="csrf_token" value="{{token}}">
+        <input type="submit" name="" value="登入"><br>
+    </form>
+    <p><a href="./register.php">尚未註冊？</a></p>
+    
+
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<header>
+    <meta charset="utf-8">
+    <title>Message Board</title>
+</header>
+<style>
+  body {
+    color: rgb(0, 2, 128);
+  }
+
+  a {
+    color: rgb(7, 68, 173);
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+
+  li {
+    float: left;
+  }
+
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  li a:hover {
+    background-color: #111;
+  }
+</style>
+<body>
+  <ul>
+    <li><a class="active" href="./">首頁</a></li>
+  </ul>
+
+  <div style="text-align: center;" valign="center">
+    <h1><a href='/about.php?id={{uuid}}'>{{name}}</a>，第{{ user_counter }}次來訪！</h1>
+    總共有{{all_counter}}次閱覽啦!!
+    <br>
+    <br>
+
+    <form class="" action="message_board.php" method="post">
+      <br>留言聊天喔!!  請輸入<input type="text" name="message" value="">  
+      <input type="hidden" name="csrf_token" value="{{token}}">
+      <input type="submit" name="" value="送出"><br>
+    </form>
+    
+    <table border="1" align="center">
+      <tr>
+          <td></td>
+          <td>Name</td>
+          <td>Message</td>
+          <td>Time</td>
+          <td>IP</td>
+          <td>Delete</td>
+      </tr>
+      {%for i in msg%}
+      <tr>
+          <td><img src="../upload/d780a1bf06534fc38c186fcec9dffbe4.jpg" width="60" height="60"></td>
+          <td><a href='/about.php?id={{i.uuid}}'>{{i.name}}</a></td>
+          <td>{{i.message}}</td>
+          <td>{{i.time}}</td>
+          <td>{{i.ip}}</td>
+          {% if i.name == name %}
+          <td><form method="post" action="./delete.php">
+              <input type="hidden" name="csrf_token" value="{{token}}">
+              <input type="hidden" name="id" value="{{i.id}}">
+              <button type="submit" name="" value="刪除">
+                  刪除
+              </button>
+            </form>
+          </td>
+          {% else %}
+          <td>meow</td>
+          {% endif %}
+      </tr>
+      {%endfor%}
+  </table>
+  <br><br><br>
+  <form method="post" action="/logout.php">
+    <input type="hidden" name="csrf_token" value="{{token}}">
+    <input type="image" name="meow" value="meow" alt="meow" src="./static/logout.gif" height="80">
+  </form>
+
+
+</body>
+
+</html>
